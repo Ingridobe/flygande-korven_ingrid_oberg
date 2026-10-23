@@ -15,7 +15,7 @@ a { color: inherit; }
 .logo img { display: block; width: 100%; max-width: 190px; height: auto; }
 
 .menu-wrapper {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 16px;
 }
@@ -60,14 +60,105 @@ a { color: inherit; }
 
 /* Nya menybilder: bara en grundregel så att de ryms i sidan.
    Korvkortens utseende, Flexbox och Grid skriver du själv. */
-.dish-card img { display: block; max-width: 100%; height: auto; }
+.dish-card img { 
+  display: block; 
+  max-width: 100%; 
+  height: auto;
+  flex-grow: 1;
+  object-fit: cover;
+  margin-bottom: 8px; 
+}
 
 /* Din uppgift: se README.md och Figma. Börja med HTML-strukturen. */
 
 /* Samma gruppering av kontaktuppgifterna som i den tidigare footern. */
 .contact-content { display: flex; flex-direction: column; gap: 16px; }
 
-/*Grid Layout*/ 
+
+
+/* Grid Layout*/
 .layout {
-  display: grid; 
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  gap: 16px;
+}
+
+header,
+footer {
+  grid-column: 1/-1;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.dish-card.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+
+}
+
+.dish-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dish-copy {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.dish-heading{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+gap: 16px;
+
+}
+
+.dish-name {
+  font-weight: lighter;
+
+}
+
+.dish-description {
+font-size: 16px;
+font-weight: 400;
+
+}
+
+.premium {
+  color: red;
+}
+
+.dish-price {
+  font-weight: bold;
+}
+
+.dish-label {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+
+
+@media (max-width: 500px){
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+  .dish-card.featured {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
